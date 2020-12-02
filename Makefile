@@ -8,7 +8,6 @@ lint:
 	make type-check
 
 type-check:
-	python -m mypy --config-file setup.cfg --pretty TO_MIGRATE_puzzle_*
 	python -m mypy --config-file setup.cfg --pretty puzzles
 
 test:
