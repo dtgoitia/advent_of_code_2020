@@ -1,0 +1,2 @@
+class PuzzleError(Exception):
+    pass
