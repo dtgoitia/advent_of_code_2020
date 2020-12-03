@@ -6,13 +6,6 @@ import attr
 RawSlope = str
 
 
-# def read_all_entries(path: Path) -> List[RawSlope]:
-#     with path.open() as f:
-#         content = [line.strip() for line in f.readlines()]
-
-#     return content
-
-
 @attr.s(auto_attribs=True, frozen=True)
 class Slope:
     right: int
