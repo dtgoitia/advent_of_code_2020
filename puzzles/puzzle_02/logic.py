@@ -1,15 +1,16 @@
 from itertools import combinations
 from pathlib import Path
-from typing import Any
+from typing import Any, List
 
 from puzzles.exceptions import PuzzleError
 
 SUM_TARGET = 2020
 
 
-def resolve(input_path: Path) -> Any:
+def resolve(input_paths: List[Path]) -> Any:
+    entries_path = input_paths[0]
 
-    with input_path.open() as f:
+    with entries_path.open() as f:
 
         entries = []
         for line in f:

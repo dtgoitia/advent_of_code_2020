@@ -1,5 +1,6 @@
 import traceback
 from pathlib import Path
+from typing import List
 
 
 def get_stacktrace_frame_path(raw_frame: str) -> Path:
@@ -13,7 +14,9 @@ def get_file_name_from_calling_function() -> Path:
     return path.parent
 
 
-def get_input_path() -> Path:
+def get_input_paths() -> List[Path]:
     parent_path = get_file_name_from_calling_function()
-    path = parent_path / "input"
-    return path
+
+    paths = sorted(parent_path.glob("input*"))
+
+    return paths

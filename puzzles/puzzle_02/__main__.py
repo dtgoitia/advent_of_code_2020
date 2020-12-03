@@ -1,12 +1,12 @@
-from puzzles.filesystem import get_input_path
+from puzzles.filesystem import get_input_paths
 
 from .logic import resolve
 
 
 def main() -> None:
-    input_path = get_input_path()
+    input_paths = get_input_paths()
 
-    result = resolve(input_path=input_path)
+    result = resolve(input_paths=input_paths)
 
     print("Result:")
     print(result)

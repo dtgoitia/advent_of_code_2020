@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Any
+from typing import Any, List
 
 
 class PuzzleError(Exception):
@@ -9,8 +9,10 @@ class PuzzleError(Exception):
 SUM_TARGET = 2020
 
 
-def resolve(input_path: Path) -> Any:
-    with input_path.open() as f:
+def resolve(input_paths: List[Path]) -> Any:
+    entries_path = input_paths[0]
+
+    with entries_path.open() as f:
 
         entries = []
         peers = []

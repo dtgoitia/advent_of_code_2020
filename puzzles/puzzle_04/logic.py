@@ -59,8 +59,9 @@ def is_valid_entry(entry: Entry) -> bool:
     return char_is_in_position_a ^ char_is_in_position_b
 
 
-def resolve(input_path: Path) -> Any:
-    input = read_all_entries(input_path)
+def resolve(input_paths: List[Path]) -> Any:
+    entries_path = input_paths[0]
+    input = read_all_entries(entries_path)
 
     entries = (parse_entry(raw_entry) for raw_entry in input)
 

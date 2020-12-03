@@ -36,6 +36,6 @@ def test_is_valid_entry(raw_entry, is_valid):
 
 
 def test_resolve(sample_input_path):
-    result = resolve(input_path=sample_input_path)
+    result = resolve(input_paths=[sample_input_path])
 
     assert result == 1
