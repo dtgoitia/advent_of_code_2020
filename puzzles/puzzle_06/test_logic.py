@@ -1,17 +1,7 @@
-from pathlib import Path, PosixPath
+from pathlib import PosixPath
 from textwrap import dedent
 
-import pytest
-
-from .logic import (
-    Map,
-    Position,
-    Slope,
-    Step,
-    parse_slope,
-    resolve,
-    traverse_map,
-)
+from .logic import Map, Position, Slope, Step, parse_slope, resolve, traverse_map
 
 
 def test_parse_slope():
@@ -62,7 +52,7 @@ def test_traverse_map():
     assert tree_amount == 7
 
 
-def test_resolve(tmp_path: PosixPath) -> Path:
+def test_resolve(tmp_path: PosixPath) -> None:
     map_input_path = tmp_path / "input_1_map"
     map_input_path.write_text(
         dedent(
