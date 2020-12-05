@@ -40,14 +40,34 @@ def resolve(input_paths: List[Path]) -> Any:
         seat_id = int(row * 8 + column)
         seat_ids.append(seat_id)
 
-    sorted_seat_ids = iter(sorted(seat_ids))
-    prev_seat_id = next(sorted_seat_ids)
-    for next_seat_id in sorted_seat_ids:
-        if prev_seat_id + 1 == next_seat_id:
-            prev_seat_id = next_seat_id
-        else:
-            break
+    sorted_ids = sorted(seat_ids)
+    amount = len(sorted_ids)
 
-    seat_id = next_seat_id - 1
+    i_range = [0, amount - 1]
+    is_last_iteration = False
+    while True:
+        i_peek = (i_range[0] + i_range[1]) // 2  # middle of i_range
+        peeked_id = sorted_ids[i_peek]
+        expected_id = sorted_ids[0] + i_peek
+
+        if peeked_id == expected_id:
+            # range    0 1 2 3 4 5 6 (all OK so far)
+            # expected 0 1 2 3 4 5 6
+            # missing seat ID is after the peeked seat
+            if is_last_iteration:
+                seat_id = sorted_ids[i_peek] + 1
+                break
+            i_range[0] = i_peek
+        else:
+            # range    0 1 2 3|5 6 7 (missing ID on the left)
+            # expected 0 1 2 3 4 5 6
+            # missing seat ID is before the peeked seat
+            if is_last_iteration:
+                seat_id = sorted_ids[i_peek] - 1
+                break
+            i_range[1] = i_peek
+
+        if i_range[0] + 1 == i_range[1]:
+            is_last_iteration = True
 
     return seat_id
