@@ -1,10 +1,11 @@
-from itertools import zip_longest
 from pathlib import Path
 from typing import Any, Iterator, List
 
+PersonAnswer = str
 
-def get_forms(path: Path) -> Iterator[str]:
-    form_lines = []
+
+def get_forms(path: Path) -> Iterator[PersonAnswer]:
+    form_lines: List[PersonAnswer] = []
     with path.open("r") as f:
         for line in f:
             if line == "\n":

@@ -1,7 +1,6 @@
 from pathlib import PosixPath
 from textwrap import dedent
 
-
 from .logic import resolve
 
 
